@@ -1,3 +1,4 @@
+import NotFoundPage from "@/pages/commonPages/NotFoundPage";
 import HomePage from "../pages/publicPages/HomePage";
 
 export const publicRoutes = [
@@ -9,5 +10,9 @@ export const publicRoutes = [
     {
         path: '/',
         element: <HomePage />,
+    },
+    {
+        path: '/*',
+        element: <NotFoundPage />,
     },
 ];
