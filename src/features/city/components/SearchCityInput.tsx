@@ -36,7 +36,7 @@ const SearchCityInput = () => {
 
     return (
         <Input
-            placeholder="Search City"
+            placeholder="Select City"
             className="w-[300px]"
             labelPlacement="outside"
             value={inputValue}
