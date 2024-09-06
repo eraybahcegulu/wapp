@@ -4,6 +4,7 @@ import NotFound from "../../../assets/not_found.png"
 const CityNotFoundImage = () => {
     return (
         <Image 
+
             alt="NotFound"
             src={NotFound}
         />
