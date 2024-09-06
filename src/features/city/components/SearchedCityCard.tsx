@@ -5,13 +5,14 @@ import { useCityStore } from '@/zustand/SearchedCityStore';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import CityNotFoundCard from './CityNotFoundCard';
 import SelectCityCard from './SelectCityCard';
+import { API_KEY } from "@/config";
 
 
 const SearchedCityCard = () => {
     const { cityName } = useCityStore();
 
 
-    const { data: city, isLoading, isSuccess } = useGetCity({ cityName, apiKey: '8d58ede05e7e4ab4bd91d0d5700b243d' });
+    const { data: city, isLoading, isSuccess } = useGetCity({ cityName, apiKey: API_KEY });
     if (isSuccess && !cityName) return < SelectCityCard />
     if (isLoading) return <LoadingSpinner />
     if (!city || !city.data) return <CityNotFoundCard />
@@ -23,7 +24,8 @@ const SearchedCityCard = () => {
             <CardBody className="overflow-visible py-2">
                 <div className='flex flex-col items-center gap-10 justify-center text-center'>
                     <div>
-                        <p className='text-5xl text-blue-700'>{city.data.data[0].temp} °C</p>
+                        <p className='text-5xl '>{city.data.data[0].temp} °C</p>
+                        <p className='text-5xl text-[#296573]'>{city.data.data[0].temp} °C</p>
 
                     </div>
 
@@ -42,7 +44,7 @@ const SearchedCityCard = () => {
                     <div className='flex flex-row justify-center items-center gap-2'>
 
                         <img className='w-8' src={`https://www.weatherbit.io/static/img/icons/${city.data.data[0].weather.icon}.png`} alt={city.data.data[0].weather.description} />
-                        <p className="text-green-800">{city.data.data[0].weather.description}</p>
+                        <p className="text-[#296573]">{city.data.data[0].weather.description}</p>
                     </div>
                 </div>
             </CardBody>

@@ -6,8 +6,8 @@ import SearchedCityCard from "../../features/city/components/SearchedCityCard"
 
 const HomePage = () => {
   return (
-    <div className="container mx-auto flex flex-col md:flex-row justify-center gap-5 p-[3%] items-center md:items-start">
-      <div className="flex w-[600px]  ">
+    <div className="container mx-auto flex flex-col md:flex-row justify-between gap-5 p-[3%] items-center md:items-start">
+      <div className="flex   ">
         <CityTable />
       </div>
 
