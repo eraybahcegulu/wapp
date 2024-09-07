@@ -1,4 +1,5 @@
 ```
+- Optimize, Scalable Architecture, Accessible  Client Side
 - Vite
 - ReactJS
 - TypeScript
