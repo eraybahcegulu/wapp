@@ -3,7 +3,7 @@ import { IData } from '../types';
 
 export const cityTableColumns: ColumnsType<IData> = [
     {
-        title: 'Day',
+        title: 'Days',
         key: 'day',
         render: (record: IData) => {
             const date = new Date(record.datetime);
@@ -12,7 +12,7 @@ export const cityTableColumns: ColumnsType<IData> = [
         },
     },
     {
-        title: 'Date',
+        title: 'Dates',
         dataIndex: 'datetime',
         key: 'datetime',
         render: (datetime) => new Date(datetime).toLocaleDateString('en-US', {
@@ -22,13 +22,16 @@ export const cityTableColumns: ColumnsType<IData> = [
         }),
     },
     {
-        title: 'Max Temperature (°C)',
-        dataIndex: 'max_temp',
-        key: 'max_temp',
-    },
-    {
-        title: 'Min Temperature (°C)',
+        title: 'Lowest Temp.',
         dataIndex: 'min_temp',
         key: 'min_temp',
+        render: (value: number) => `${value} °C`,
     },
+    {
+        title: 'Highest Temp.',
+        dataIndex: 'max_temp',
+        key: 'max_temp',
+        render: (value: number) => `${value} °C`,
+    },
+
 ];
