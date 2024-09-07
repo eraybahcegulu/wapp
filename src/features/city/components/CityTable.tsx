@@ -1,7 +1,8 @@
 import { Table } from 'antd';
 import { cityTableColumns } from '../columns';
 import { useGetCity } from '../api/queries';
-import { useCityStore } from '@/zustand/SearchedCityStore';
+import { useSearchedCityStore } from '@/zustand/SearchedCityStore';
+import { useSelectedCityStore } from '@/zustand/SelectedCityStore';
 
 import CityNotFoundImage from './CityNotFoundImage';
 import SelectCityImage from './SelectCityImage';
@@ -10,7 +11,8 @@ import { API_KEY } from '@/config';
 
 
 const CityTable: React.FC = () => {
-    const { cityName } = useCityStore();
+    const { cityName } = useSearchedCityStore();
+    const { setSelectedDay } = useSelectedCityStore();
 
     const { data: city, isLoading, isSuccess } = useGetCity({ cityName, apiKey: API_KEY});
 
@@ -22,18 +24,26 @@ const CityTable: React.FC = () => {
 
 
     return (
-        <div className='flex flex-col border-1 p-4 gap-4'>
-            <div>
-                <span className='font-extrabold'>Weather Forecaster for {city.data.city_name}</span>
-            </div>
-            <Table
-                pagination={false}
-                columns={cityTableColumns}
-                dataSource={city.data.data}
-                rowKey="datetime"
-            />
-
+        <div className="flex flex-col border-1 p-4 gap-4">
+        <div>
+            <span className="font-extrabold">Weather Forecaster for {city.data.city_name}</span>
         </div>
+        <Table
+            pagination={false}
+            columns={cityTableColumns}
+            dataSource={city.data.data}
+            rowKey="datetime"
+            onRow={(_, index) => {
+                return {
+                    onClick: () => {
+                        if (index !== undefined) {
+                            setSelectedDay(index);
+                        }
+                    },
+                };
+            }}
+        />
+    </div>
     );
 };
 

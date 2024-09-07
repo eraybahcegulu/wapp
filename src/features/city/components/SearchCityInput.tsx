@@ -1,4 +1,4 @@
-import { useCityStore } from "@/zustand/SearchedCityStore";
+import { useSearchedCityStore } from "@/zustand/SearchedCityStore";
 import { Input } from "@nextui-org/react";
 import { IoMdSearch } from "react-icons/io";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { searchCityValidator } from "../validators";
 import toast from "react-hot-toast";
 
 const SearchCityInput = () => {
-    const { cityName, setCityName } = useCityStore();
+    const { cityName, setCityName } = useSearchedCityStore();
     const [inputValue, setInputValue] = useState(cityName);
 
     const handleSearch = async () => {
