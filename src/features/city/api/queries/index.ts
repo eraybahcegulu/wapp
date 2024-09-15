@@ -8,6 +8,7 @@ export const useGetCity = ({ cityName, apiKey, config }: IGetCityQueryOptions) =
     return useQuery<ExtractFnReturnType<GetCityQuery>>({
         ...config,
         queryKey: ['city', cityName],
+        cacheTime: 60000, // 60 saniye sonra cache'den silinir
         queryFn: () => getCityService({ cityName, apiKey }),
     });
 };
